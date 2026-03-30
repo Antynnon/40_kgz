@@ -1,0 +1,866 @@
+<html lang="pl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>40 KGZ Bractwo Smoczej Doliny</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#f08080", // Pink
+                "secondary": "#a3f0f0", // Teal/Cyan
+                "tertiary": "#ffe174", // Yellow
+                "accent": "#0d696a", // Dark Teal
+                "background": "#fcf9f8",
+                "on-background": "#1c1b1b",
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Public Sans"],
+              },
+            },
+          },
+        }
+    </script>
+<style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .anchor-target {
+            scroll-margin-top: 110px;
+        }
+        .doodle-border {
+            border: 3px solid #1c1b1b;
+        }
+        .doodle-shadow {
+            box-shadow: 6px 6px 0px 0px #1c1b1b;
+        }
+        .doodle-shadow-hover:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px 0px #1c1b1b;
+        }
+        .dragon-bg {
+            background-image: radial-gradient(#1c1b1b 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-attachment: fixed;
+        }
+        .dragon-scales {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40a20 20 0 0 1 20-20 20 20 0 0 1 20 20' fill='none' stroke='%231c1b1b' stroke-opacity='0.05' stroke-width='2'/%3E%3C/svg%3E");
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        details[open] .accordion-content {
+            max-height: 1000px;
+        }
+        .floating-cloud {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(5px); }
+        }
+        .gallery-card {
+            cursor: pointer;
+        }
+        .album-collage {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .album-main {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border: 3px solid #1c1b1b;
+            background: #fff;
+        }
+        .album-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .album-small {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: 3px solid #1c1b1b;
+            background: #fff;
+        }
+        .album-more {
+            position: relative;
+            border: 3px solid #1c1b1b;
+            box-shadow: 3px 3px 0 #1c1b1b;
+            overflow: hidden;
+            min-height: 100%;
+            display: grid;
+            place-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 900;
+            color: #fff;
+            background: #1c1b1b;
+        }
+        .album-more::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+        .album-more-bg {
+            position: absolute;
+            inset: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+            object-fit: cover;
+            filter: blur(10px) saturate(1.35);
+            transform: scale(1.2);
+        }
+        .album-more-label {
+            position: relative;
+            z-index: 1;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+        }
+        .gallery-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .gallery-lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-panel {
+            width: min(1100px, 100%);
+            background: #fcf9f8;
+            border: 3px solid #1c1b1b;
+            box-shadow: 8px 8px 0 #1c1b1b;
+            padding: 18px;
+        }
+        .lightbox-main {
+            position: relative;
+            border: 3px solid #1c1b1b;
+            background: #ffffff;
+            min-height: 260px;
+            max-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .lightbox-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: popIn 0.22s ease;
+        }
+        .lightbox-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        .lightbox-thumbs {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 4px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .lightbox-thumb {
+            flex: 0 0 auto;
+            width: 96px;
+            border: 2px solid #1c1b1b;
+            background: #fff;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            opacity: 0.7;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .lightbox-thumb:hover {
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+        .lightbox-thumb.active {
+            border-width: 3px;
+            opacity: 1;
+        }
+        .lightbox-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lightbox-btn {
+            border: 3px solid #1c1b1b;
+            background: #ffe174;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            box-shadow: 3px 3px 0 #1c1b1b;
+            transition: transform 0.2s ease;
+        }
+        .lightbox-btn:hover {
+            transform: translate(1px, 1px);
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 3px solid #1c1b1b;
+            background: #ffffff;
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            box-shadow: 3px 3px 0 #1c1b1b;
+            font-size: 28px;
+            line-height: 1;
+        }
+        .lightbox-nav.prev { left: 14px; }
+        .lightbox-nav.next { right: 14px; }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            .lightbox-thumb {
+                width: 78px;
+            }
+            .lightbox-nav {
+                width: 46px;
+                height: 46px;
+            }
+        }
+        .section-interlude {
+            position: relative;
+            width: 100%;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            pointer-events: none;
+            line-height: 0;
+            overflow: visible;
+            z-index: 5;
+        }
+        .section-interlude.left {
+            text-align: left;
+        }
+        .section-interlude.right {
+            text-align: right;
+        }
+        .section-interlude.center {
+            text-align: center;
+        }
+        .section-interlude-item {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: auto;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            transform: translateY(-50%);
+            user-select: none;
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+        }
+        .section-interlude.left .section-interlude-item {
+            left: -2vw;
+        }
+        .section-interlude.left .section-interlude-item.max-left {
+            left: -12vw;
+            top: -20px;
+        }
+        .section-interlude.right .section-interlude-item {
+            right: -2vw;
+        }
+        .section-interlude.center .section-interlude-item {
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .section-interlude-item.size-half {
+            width: 25%;
+        }
+        .section-interlude-item.size-two-thirds {
+            width: 33.3333%;
+        }
+        .section-interlude-item.size-one-third {
+            width: 16.6667%;
+        }
+        .section-interlude-item.size-cloud-plus-30 {
+            width: 32.5%;
+        }
+        .section-interlude-item.size-dragon-plus-10 {
+            width: 27.5%;
+        }
+        .section-interlude-item.bottom-on-divider {
+            transform: translateY(-100%);
+        }
+        .o-nas-bottom-dragon {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 25%;
+            transform: none;
+            pointer-events: none;
+            user-select: none;
+            z-index: 3;
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+        }
+        .gallery-bottom-decor {
+            position: absolute;
+            inset: auto 0 -6px 0;
+            height: 0;
+            pointer-events: none;
+            z-index: 12;
+            overflow: visible;
+        }
+        .gallery-bottom-decor img {
+            position: absolute;
+            bottom: 0;
+            height: auto;
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+        }
+        .gallery-bottom-decor img.size-one-third {
+            width: 33.3333%;
+        }
+        .gallery-bottom-decor .cloud-left {
+            left: -2vw;
+        }
+        .gallery-bottom-decor .dragon-right {
+            right: -2vw;
+            bottom: -60px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary selection:text-white dragon-bg dragon-scales">
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b-4 border-black">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-2">
+<div class="text-xl font-black text-on-background font-headline tracking-tighter uppercase">
+                40 KGZ Bractwo Smoczej Doliny
+            </div>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-bold hover:text-primary transition-colors uppercase text-sm tracking-widest" href="#o-nas">O nas</a>
+<a class="font-bold hover:text-primary transition-colors uppercase text-sm tracking-widest" href="#strefa-rodzica">Strefa rodzica</a>
+<a class="font-bold hover:text-primary transition-colors uppercase text-sm tracking-widest" href="#galeria">Galeria</a>
+<a class="font-bold hover:text-primary transition-colors uppercase text-sm tracking-widest" href="#kontakt">Kontakt</a>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined font-black">menu</span>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-4">
+<div class="absolute inset-0 z-0">
+<img alt="Bractwo Smoczej Doliny" class="w-full h-full object-cover" src="zdjecia/gromada.png"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6">
+<div class="flex flex-wrap justify-center gap-2 text-white/90 text-[10px] font-black uppercase tracking-[0.2em] mb-2 bg-black/20 backdrop-blur-sm px-4 py-1 rounded-full border border-white/20">
+<a class="no-underline" href="https://zhr.pl/" rel="noopener noreferrer" target="_blank">Związek Harcerstwa Rzeczypospolitej</a>
+<span>•</span>
+<a class="no-underline" href="https://krowodrza.zhr.pl/" rel="noopener noreferrer" target="_blank">Hufiec Kraków-Krowodrza</a>
+<span>•</span>
+<a class="no-underline" href="https://www.facebook.com/SzczepHuragan1945/" rel="noopener noreferrer" target="_blank">Szczep Huragan</a>
+</div>
+<h1 class="text-5xl md:text-8xl font-black text-white font-headline leading-none drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] uppercase italic">
+            40 KGZ Bractwo Smoczej Doliny
+        </h1>
+<a class="bg-primary text-on-background font-headline font-black text-xl px-12 py-5 doodle-border doodle-shadow doodle-shadow-hover transition-all uppercase tracking-widest transform -rotate-2 inline-block" href="#strefa-rodzica">
+            DOŁĄCZ DO NAS!
+    </a>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white animate-bounce">
+<span class="material-symbols-outlined text-5xl">expand_more</span>
+</div>
+</section>
+<!-- Why Join Us Section -->
+<section class="py-24 relative overflow-hidden bg-white border-y-4 border-black">
+<div class="max-w-screen-xl mx-auto px-8 relative z-10">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-6xl font-black font-headline uppercase relative inline-block">
+                Dlaczego warto do nas dołączyć?
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+<!-- Card 1 -->
+<div class="bg-secondary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:-rotate-1">
+<div class="mb-6 p-4 bg-white rounded-xl doodle-border">
+<span class="material-symbols-outlined text-5xl">construction</span>
+</div>
+<h3 class="text-xl font-black font-headline mb-0 uppercase leading-tight">Budowanie umiejętności</h3>
+</div>
+<!-- Card 2 -->
+<div class="bg-primary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:rotate-2">
+<div class="mb-6 p-4 bg-white rounded-xl doodle-border">
+<span class="material-symbols-outlined text-5xl">forest</span>
+</div>
+<h3 class="text-xl font-black font-headline mb-0 uppercase leading-tight">Aktywność na zewnątrz</h3>
+</div>
+<!-- Card 3 -->
+<div class="bg-tertiary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:-rotate-2">
+<div class="mb-6 p-4 bg-white rounded-xl doodle-border">
+<span class="material-symbols-outlined text-5xl">groups</span>
+</div>
+<h3 class="text-xl font-black font-headline mb-0 uppercase leading-tight">Nauka współpracy</h3>
+</div>
+<!-- Card 4 -->
+<div class="bg-accent p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center text-white transform hover:rotate-1">
+<div class="mb-6 p-4 bg-white rounded-xl doodle-border">
+<span class="material-symbols-outlined text-5xl text-accent">favorite</span>
+</div>
+<h3 class="text-xl font-black font-headline mb-0 uppercase leading-tight">Przyjaźnie na lata</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- O nas Section -->
+<section class="py-24 relative overflow-hidden anchor-target" id="o-nas">
+<!-- Dragon Decoration Left -->
+<div class="absolute top-1/2 -left-20 -translate-y-1/2 opacity-10 pointer-events-none transform -rotate-12 scale-150">
+
+</div>
+<div class="max-w-4xl mx-auto px-8 relative z-10">
+<div class="bg-white p-12 doodle-border doodle-shadow relative">
+<div class="mb-8 flex items-center justify-center gap-3 text-primary floating-cloud">
+<h2 class="text-5xl font-black font-headline uppercase text-center italic text-on-background">O nas!</h2>
+<span class="material-symbols-outlined text-5xl">edit_note</span>
+</div>
+<div class="text-lg leading-relaxed font-medium space-y-6">
+<p>Nasze Bractwo zostało powołane gdy swego czasu pewien podróżnik znalazł niewidoczną z orbity wyspę na środku oceanu. Gdy odkrył, że wyspę zamieszkują smoki i dowiedział się, że nie są one w stanie utrzymać kontaktu ze światem ludzi, postanowił pomóc im jak tylko mógł.</p>
+<p>Jako bractwo działamy już od ponad 4 lat przy Krakowskiej szkole podstawowej nr 113. Pomagając smokom uczymy się różnorakich umiejętności, które mogą się okazać się przydatne na każdym kroku naszego życia, a ponadto tworzymy przyjaźnie na których zawsze można w przyszłości polegać.</p>
+</div>
+</div>
+</div>
+<img alt="" aria-hidden="true" class="o-nas-bottom-dragon" src="smoki_i_chmury/smok3.png"/>
+</section>
+<div aria-hidden="true" class="section-interlude left">
+<img alt="" class="section-interlude-item size-cloud-plus-30" src="smoki_i_chmury/chmrura2.png"/>
+</div>
+<!-- Nasza Kadra Section -->
+<section class="py-24 bg-secondary/20 border-y-4 border-black">
+<div class="max-w-screen-xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
+                Nasza Kadra
+                <div class="absolute -top-10 -right-12 text-accent rotate-12">
+<span class="material-symbols-outlined text-6xl">diversity_1</span>
+</div>
+</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+<!-- Team Member 1 -->
+<div class="flex flex-col items-center group">
+<div class="w-48 h-48 bg-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-3 transition-transform">
+<img alt="Jacek Kułakowski" class="w-full h-full object-cover" src="zdjecia/kadra/jaca.png"/>
+</div>
+<h3 class="text-xl font-black font-headline uppercase">Jacek Kułakowski</h3>
+<p class="text-xs font-black uppercase tracking-widest text-primary mt-1">drużynowy</p>
+</div>
+<!-- Team Member 2 -->
+<div class="flex flex-col items-center group">
+<div class="w-48 h-48 bg-secondary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:-rotate-3 transition-transform">
+<img alt="Adrian Paluch" class="w-full h-full object-cover" src="zdjecia/kadra/adi.png"/>
+</div>
+<h3 class="text-xl font-black font-headline uppercase">Adrian Paluch</h3>
+<p class="text-xs font-black uppercase tracking-widest text-accent mt-1">przyboczny</p>
+</div>
+<!-- Team Member 3 -->
+<div class="flex flex-col items-center group">
+<div class="w-48 h-48 bg-tertiary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-2 transition-transform">
+<img alt="Staś Kaczmarczyk" class="w-full h-full object-cover" src="zdjecia/kadra/stas.png"/>
+</div>
+<h3 class="text-xl font-black font-headline uppercase">Staś Kaczmarczyk</h3>
+<p class="text-xs font-black uppercase tracking-widest text-on-background mt-1">przyboczny</p>
+</div>
+<!-- Team Member 4 -->
+<div class="flex flex-col items-center group">
+<div class="w-48 h-48 bg-accent doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:-rotate-2 transition-transform">
+<img alt="Adam Gruszczyński" class="w-full h-full object-cover" src="zdjecia/kadra/adam.png"/>
+</div>
+<h3 class="text-xl font-black font-headline uppercase">Adam Gruszczyński</h3>
+<p class="text-xs font-black uppercase tracking-widest text-accent mt-1">opiekun szóstki</p>
+</div>
+<!-- Team Member 5 -->
+<div class="flex flex-col items-center group">
+<div class="w-48 h-48 bg-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-6 transition-transform">
+<img alt="Dominik Mika" class="w-full h-full object-cover" src="zdjecia/kadra/dominik.png"/>
+</div>
+<h3 class="text-xl font-black font-headline uppercase">Dominik Mika</h3>
+<p class="text-xs font-black uppercase tracking-widest text-primary mt-1">opiekun szóstki</p>
+</div>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="section-interlude right">
+<img alt="" class="section-interlude-item size-two-thirds" src="smoki_i_chmury/chmura%201.png"/>
+</div>
+<!-- Zbiórki Section -->
+<section class="py-24 relative overflow-hidden bg-white">
+<div class="max-w-screen-xl mx-auto px-8 relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
+                Zbiórki
+                <div class="absolute -top-8 -left-12 text-primary -rotate-12">
+<span class="material-symbols-outlined text-6xl">location_on</span>
+</div>
+</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+<div class="bg-secondary p-10 doodle-border doodle-shadow flex flex-col justify-center">
+<div class="mb-6">
+<span class="material-symbols-outlined text-6xl">calendar_month</span>
+</div>
+<p class="text-2xl md:text-3xl font-black font-headline uppercase leading-tight">
+                    Zbiórki odbywają się w <span class="bg-primary px-2">środy</span> od <span class="bg-white px-2">17:00-18:30</span>
+</p>
+<p class="mt-6 text-lg font-bold">Nasza harcówka znajduje się w SP 113 przy ulicy Piotra Stachiewicza 33, 31-328 Kraków.</p>
+<a class="mt-10 bg-on-background text-white font-black py-4 px-8 doodle-border doodle-shadow-hover transition-all uppercase tracking-widest self-start inline-block" href="https://google.pl/maps/place/Szko%C5%82a+Podstawowa+nr+113+im.+L.+W%C4%99grzynowicza,+Piotra+Stachiewicza,+Krak%C3%B3w/@50.1382715,19.8976571,14z/data=!4m5!3m4!1s0x47165a4c1af5dbcb:0xe603957e515952a!8m2!3d50.0860984!4d19.9170562?hl=pl&amp;entry=ttu&amp;g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
+                    SPRAWDŹ GDZIE TO
+                </a>
+</div>
+<div class="doodle-border doodle-shadow bg-background relative overflow-hidden min-h-[400px]">
+<iframe allowfullscreen="" class="w-full h-full grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" src="https://www.google.com/maps?q=SP%20113%20ul%20Piotra%20Stachiewicza%2033%2C%2031-328%20Krak%C3%B3w&output=embed" style="border:0;"></iframe>
+<div class="absolute top-4 right-4 bg-black text-white px-4 py-2 font-black uppercase text-xs transform rotate-2">Smocza Wyspa</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Strefa rodzica Section -->
+<section class="py-24 bg-tertiary/20 border-y-4 border-black anchor-target" id="strefa-rodzica">
+<div class="max-w-4xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
+                Strefa rodzica
+                <div class="absolute -top-10 -right-16 text-primary rotate-45 floating-cloud">
+<span class="material-symbols-outlined text-7xl">family_restroom</span>
+</div>
+</h2>
+</div>
+<div class="space-y-6">
+<!-- Accordion 1 -->
+<details class="group doodle-border doodle-shadow overflow-hidden bg-white" open="">
+<summary class="p-6 cursor-pointer bg-secondary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
+                    Dla nowych zuchów
+                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="accordion-content p-8 bg-white font-medium leading-relaxed">
+<p>Do gromady może dołączyć każde dziecko. Wszyscy są mile widziani, bez wyjątków. Na pierwszą zbiórkę można przyjść zupełnie na luzie, zobaczyć jak to wygląda i sprawdzić, czy to na pewno coś dla Was. Jeśli ktoś się stresuje, zachęcamy, żeby wpaść z kolegą, razem zawsze raźniej. Na pierwsze zbiórki radzimy przyjść bez munduru i sprawdzić czy to coś co Wam sie spodoba.</p>
+</div>
+</details>
+<!-- Accordion 2 -->
+<details class="group doodle-border doodle-shadow overflow-hidden bg-white">
+<summary class="p-6 cursor-pointer bg-primary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
+                    Mundur i ekwipunek
+                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="accordion-content p-8 bg-white font-medium leading-relaxed">
+<p>Obowiązuje mundur zuchowy ZHR. Można go kupić w składnicy harcerskiej przy rondzie Grzegórzeczkim albo zamówić online na <a class="font-black underline" href="#">sklepharcerski.pl</a>. Często można też znaleźć używane w świetnym stanie na portalach ogłoszeniowych.</p>
+</div>
+</details>
+<!-- Accordion 3 -->
+<details class="group doodle-border doodle-shadow overflow-hidden bg-white">
+<summary class="p-6 cursor-pointer bg-tertiary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
+                    Sprawy formalne
+                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="accordion-content p-8 bg-white font-medium leading-relaxed">
+<p class="mb-4">Składka wynosi 26 zł miesięcznie i opłacana jest przelewem na konto Szczepu.</p>
+<div class="p-4 bg-background border-2 border-dashed border-black rounded-lg font-mono text-sm">
+                        Nr konta: 20 1020 1026 0000 1802 0540 9190 <br/>
+                        Tytuł: Składka programowa [Imię Nazwisko] 40 KGZ Bractwo Smoczej Doliny za [okres wpłaty]
+                    </div>
+</div>
+</details>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="section-interlude left">
+<img alt="" class="section-interlude-item size-dragon-plus-10 bottom-on-divider" src="smoki_i_chmury/smok2.png"/>
+</div>
+<!-- Galeria Section -->
+<section class="py-24 bg-white anchor-target relative overflow-visible" id="galeria">
+<div class="gallery-bottom-decor" aria-hidden="true">
+<img alt="" class="dragon-right size-one-third" src="smoki_i_chmury/smok1.png"/>
+</div>
+<div class="max-w-screen-xl mx-auto px-6 relative z-10">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
+                Galeria
+                <div class="absolute -top-10 -right-16 text-accent -rotate-12">
+<span class="material-symbols-outlined text-7xl">photo_library</span>
+</div>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Album 1 -->
+<div class="bg-secondary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card" data-gallery="Zbiórki" data-images="zdjecia/zbiorka/zbiorka1.jfif,zdjecia/zbiorka/jacek.jfif">
+<div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
+<img alt="Zbiórki" class="album-main" src="zdjecia/zbiorka/zbiorka1.jfif"/>
+<div class="album-row">
+<img alt="Zbiórki miniatura" class="album-small" src="zdjecia/zbiorka/jacek.jfif"/>
+<div class="album-more">
+<img alt="" aria-hidden="true" class="album-more-bg" src="zdjecia/zbiorka/zbiorka1.jfif"/>
+<span class="album-more-label">Więcej</span>
+</div>
+</div>
+</div>
+<h3 class="text-2xl font-black font-headline uppercase tracking-tighter">Zbiórki</h3>
+<p class="text-xs font-black uppercase tracking-widest opacity-50">Zobacz zdjęcia z naszych spotkań</p>
+</div>
+<!-- Album 2 -->
+<div class="bg-primary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card" data-gallery="Zimowiska" data-images="zdjecia/zimo/zimo1.jpg,zdjecia/zimo/zimo2.jfif,zdjecia/zimo/zimo3.jfif,zdjecia/zimo/zimo4.jpeg,zdjecia/zimo/zimo5.jpeg,zdjecia/zimo/zimo6.jpeg,zdjecia/zimo/zimo7.jpeg,zdjecia/zimo/zimo8.jpg">
+<div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
+<img alt="Zimowisko 1" class="album-main" src="zdjecia/zimo/zimo1.jpg"/>
+<div class="album-row">
+<img alt="Zimowisko 2" class="album-small" src="zdjecia/zimo/zimo2.jfif"/>
+<div class="album-more">
+<img alt="" aria-hidden="true" class="album-more-bg" src="zdjecia/zimo/zimo3.jfif"/>
+<span class="album-more-label">Więcej</span>
+</div>
+</div>
+</div>
+<h3 class="text-2xl font-black font-headline uppercase tracking-tighter">Zimowiska</h3>
+<p class="text-xs font-black uppercase tracking-widest opacity-50">Przygody na śniegu</p>
+</div>
+<!-- Album 3 -->
+<div class="bg-tertiary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card" data-gallery="Kolonie" data-images="zdjecia/kolonia/kolonia1.jpg,zdjecia/kolonia/kolonia2.jpg,zdjecia/kolonia/kolonia3.jpg,zdjecia/kolonia/kolonia4.jpg,zdjecia/kolonia/kolonia5.jpg,zdjecia/kolonia/kolonia6.jpg,zdjecia/kolonia/kolonia7.jpg">
+<div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
+<img alt="Kolonia 1" class="album-main" src="zdjecia/kolonia/kolonia1.jpg"/>
+<div class="album-row">
+<img alt="Kolonia 2" class="album-small" src="zdjecia/kolonia/kolonia2.jpg"/>
+<div class="album-more">
+<img alt="" aria-hidden="true" class="album-more-bg" src="zdjecia/kolonia/kolonia3.jpg"/>
+<span class="album-more-label">Więcej</span>
+</div>
+</div>
+</div>
+<h3 class="text-2xl font-black font-headline uppercase tracking-tighter">Kolonie</h3>
+<p class="text-xs font-black uppercase tracking-widest opacity-50">Nasze wielkie letnie wyprawy</p>
+</div>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="section-interlude left">
+<img alt="" class="section-interlude-item size-two-thirds max-left" src="smoki_i_chmury/chmura3.png"/>
+</div>
+<!-- Kontakt Section -->
+<section class="py-24 bg-accent/10 border-t-4 border-black anchor-target" id="kontakt">
+<div class="max-w-screen-xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
+                NAPISZ DO NAS!
+                <div class="absolute -top-10 -right-14 text-primary rotate-12 floating-cloud">
+<span class="material-symbols-outlined text-6xl">mail</span>
+</div>
+</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Contact Data -->
+<div class="bg-white p-10 doodle-border doodle-shadow space-y-8 relative overflow-hidden">
+<h3 class="text-3xl font-black font-headline uppercase italic">Dane kontaktowe</h3>
+<div class="space-y-6 font-bold text-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">alternate_email</span>
+<a class="hover:underline" href="mailto:40kgzbractwosmoczejdoliny@gmail.com">40kgzbractwosmoczejdoliny@gmail.com</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-accent text-3xl">call</span>
+<span>Telefon (Jacek): 693 134 871</span>
+</div>
+</div>
+<p class="text-sm uppercase tracking-widest font-black opacity-30 mt-10">Odpowiadamy zazwyczaj w ciągu 24h</p>
+</div>
+<!-- Socials -->
+<div class="bg-tertiary p-10 doodle-border doodle-shadow flex flex-col items-center justify-center">
+<h3 class="text-3xl font-black font-headline uppercase italic mb-10 text-center">Znajdź nas w sieci</h3>
+<div class="flex gap-12">
+<a class="flex flex-col items-center gap-2 group" href="https://www.facebook.com/profile.php?id=100079442983488" target="_blank">
+<div class="w-24 h-24 bg-white doodle-border doodle-shadow-hover rounded-2xl flex items-center justify-center transition-all group-hover:-translate-y-2">
+<svg class="w-12 h-12 text-[#1877F2]" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</div>
+<span class="font-black uppercase text-xs tracking-[0.2em] mt-2">Facebook</span>
+</a>
+<a class="flex flex-col items-center gap-2 group" href="https://www.instagram.com/szczep.huragan/" target="_blank">
+<div class="w-24 h-24 bg-white doodle-border doodle-shadow-hover rounded-2xl flex items-center justify-center transition-all group-hover:-translate-y-2">
+<svg class="w-12 h-12 text-[#E4405F]" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</div>
+<span class="font-black uppercase text-xs tracking-[0.2em] mt-2">Instagram</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-12 bg-black text-white text-center font-headline uppercase tracking-[0.3em] text-[10px] font-black">
+<div class="mb-4 flex justify-center gap-4 opacity-40">
+<span class="material-symbols-outlined">castle</span>
+<span class="material-symbols-outlined">pets</span>
+<span class="material-symbols-outlined">draw</span>
+</div>
+<p>© 2026 40 KGZ Bractwo Smoczej Doliny | ZHR | Czuwaj!</p>
+</footer>
+<div aria-hidden="true" class="gallery-lightbox" id="galleryLightbox" role="dialog">
+<div class="lightbox-panel" role="document">
+<div class="lightbox-main">
+<button aria-label="Poprzednie zdjęcie" class="lightbox-nav prev" id="lightboxPrev" type="button">&#8249;</button>
+<img alt="Podgląd zdjęcia" id="lightboxImage" src=""/>
+<button aria-label="Następne zdjęcie" class="lightbox-nav next" id="lightboxNext" type="button">&#8250;</button>
+</div>
+<div class="lightbox-meta">
+<p class="font-black uppercase tracking-wider" id="lightboxTitle">Galeria</p>
+<div class="flex items-center gap-2">
+<button class="lightbox-btn" id="lightboxClose" type="button">Zamknij</button>
+</div>
+</div>
+<div class="lightbox-thumbs" id="lightboxThumbs"></div>
+</div>
+</div>
+<script>
+        (function () {
+            const cards = document.querySelectorAll('.gallery-card');
+            const lightbox = document.getElementById('galleryLightbox');
+            const imageEl = document.getElementById('lightboxImage');
+            const titleEl = document.getElementById('lightboxTitle');
+            const thumbsEl = document.getElementById('lightboxThumbs');
+            const prevBtn = document.getElementById('lightboxPrev');
+            const nextBtn = document.getElementById('lightboxNext');
+            const closeBtn = document.getElementById('lightboxClose');
+
+            let activeGallery = [];
+            let activeTitle = 'Galeria';
+            let activeIndex = 0;
+
+            function renderThumbs() {
+                thumbsEl.innerHTML = '';
+                activeGallery.forEach((src, index) => {
+                    const thumbBtn = document.createElement('button');
+                    thumbBtn.type = 'button';
+                    thumbBtn.className = 'lightbox-thumb' + (index === activeIndex ? ' active' : '');
+                    thumbBtn.setAttribute('aria-label', 'Zdjęcie ' + (index + 1));
+
+                    const thumbImg = document.createElement('img');
+                    thumbImg.src = src;
+                    thumbImg.alt = activeTitle + ' ' + (index + 1);
+
+                    thumbBtn.appendChild(thumbImg);
+                    thumbBtn.addEventListener('click', () => {
+                        activeIndex = index;
+                        updateView();
+                    });
+
+                    thumbsEl.appendChild(thumbBtn);
+                });
+
+                // Keep the selected thumbnail visible in the horizontal strip.
+                const activeThumb = thumbsEl.querySelector('.lightbox-thumb.active');
+                if (activeThumb) {
+                    activeThumb.scrollIntoView({
+                        behavior: 'smooth',
+                        inline: 'center',
+                        block: 'nearest'
+                    });
+                }
+            }
+
+            function updateView() {
+                imageEl.src = activeGallery[activeIndex];
+                imageEl.alt = activeTitle + ' ' + (activeIndex + 1);
+                titleEl.textContent = activeTitle + ' (' + (activeIndex + 1) + '/' + activeGallery.length + ')';
+                renderThumbs();
+            }
+
+            function openLightbox(title, images) {
+                activeGallery = images;
+                activeTitle = title;
+                activeIndex = 0;
+                updateView();
+                lightbox.classList.add('open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            function showNext() {
+                activeIndex = (activeIndex + 1) % activeGallery.length;
+                updateView();
+            }
+
+            function showPrev() {
+                activeIndex = (activeIndex - 1 + activeGallery.length) % activeGallery.length;
+                updateView();
+            }
+
+            cards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    const title = card.getAttribute('data-gallery') || 'Galeria';
+                    const imagesRaw = card.getAttribute('data-images') || '';
+                    const images = imagesRaw.split(',').map((item) => item.trim()).filter(Boolean);
+                    if (!images.length) {
+                        return;
+                    }
+                    openLightbox(title, images);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', showPrev);
+            nextBtn.addEventListener('click', showNext);
+
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (!lightbox.classList.contains('open')) {
+                    return;
+                }
+                if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+                if (event.key === 'ArrowRight') {
+                    showNext();
+                }
+                if (event.key === 'ArrowLeft') {
+                    showPrev();
+                }
+            });
+        })();
+    </script>
+</body></html>
