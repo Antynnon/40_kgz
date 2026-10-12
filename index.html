@@ -1,4 +1,5 @@
-<html lang="pl"><head>
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>40 KGZ Bractwo Smoczej Doliny</title>
@@ -471,12 +472,12 @@
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
                 Nasza Kadra
-                <div class="absolute -top-10 -right-12 text-accent rotate-12">
+                <span class="absolute -top-10 -right-12 text-accent rotate-12">
 <span class="material-symbols-outlined text-6xl">diversity_1</span>
-</div>
+</span>
 </h2>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Team Member 1 -->
 <div class="flex flex-col items-center group">
 <div class="w-48 h-48 bg-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-3 transition-transform">
@@ -487,29 +488,13 @@
 </div>
 <!-- Team Member 2 -->
 <div class="flex flex-col items-center group">
-<div class="w-48 h-48 bg-secondary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:-rotate-3 transition-transform">
-<img alt="Adrian Paluch" class="w-full h-full object-cover" src="zdjecia/kadra/adi.png"/>
-</div>
-<h3 class="text-xl font-black font-headline uppercase">Adrian Paluch</h3>
-<p class="text-xs font-black uppercase tracking-widest text-accent mt-1">przyboczny</p>
-</div>
-<!-- Team Member 3 -->
-<div class="flex flex-col items-center group">
-<div class="w-48 h-48 bg-tertiary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-2 transition-transform">
-<img alt="Staś Kaczmarczyk" class="w-full h-full object-cover" src="zdjecia/kadra/stas.png"/>
-</div>
-<h3 class="text-xl font-black font-headline uppercase">Staś Kaczmarczyk</h3>
-<p class="text-xs font-black uppercase tracking-widest text-on-background mt-1">przyboczny</p>
-</div>
-<!-- Team Member 4 -->
-<div class="flex flex-col items-center group">
 <div class="w-48 h-48 bg-accent doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:-rotate-2 transition-transform">
 <img alt="Adam Gruszczyński" class="w-full h-full object-cover" src="zdjecia/kadra/adam.png"/>
 </div>
 <h3 class="text-xl font-black font-headline uppercase">Adam Gruszczyński</h3>
 <p class="text-xs font-black uppercase tracking-widest text-accent mt-1">Przyboczny</p>
 </div>
-<!-- Team Member 5 -->
+<!-- Team Member 3 -->
 <div class="flex flex-col items-center group">
 <div class="w-48 h-48 bg-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-6 transition-transform">
 <img alt="Dominik Mika" class="w-full h-full object-cover" src="zdjecia/kadra/dominik.png"/>
@@ -523,15 +508,17 @@
 <div aria-hidden="true" class="section-interlude right">
 <img alt="" class="section-interlude-item size-two-thirds" src="smoki_i_chmury/chmura%201.png"/>
 </div>
+
+
 <!-- Zbiórki Section -->
 <section class="py-24 relative overflow-hidden bg-white">
 <div class="max-w-screen-xl mx-auto px-8 relative z-10">
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
                 Zbiórki
-                <div class="absolute -top-8 -left-12 text-primary -rotate-12">
+                <span class="absolute -top-8 -left-12 text-primary -rotate-12">
 <span class="material-symbols-outlined text-6xl">location_on</span>
-</div>
+</span>
 </h2>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
@@ -554,15 +541,17 @@
 </div>
 </div>
 </section>
+
+
 <!-- Strefa rodzica Section -->
 <section class="py-24 bg-tertiary/20 border-y-4 border-black anchor-target" id="strefa-rodzica">
 <div class="max-w-4xl mx-auto px-8">
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
                 Strefa rodzica
-                <div class="absolute -top-10 -right-16 text-primary rotate-45 floating-cloud">
+                <span class="absolute -top-10 -right-16 text-primary rotate-45 floating-cloud">
 <span class="material-symbols-outlined text-7xl">family_restroom</span>
-</div>
+</span>
 </h2>
 </div>
 <div class="space-y-6">
@@ -606,81 +595,200 @@
 <div aria-hidden="true" class="section-interlude left">
 <img alt="" class="section-interlude-item size-dragon-plus-10 bottom-on-divider" src="smoki_i_chmury/smok2.png"/>
 </div>
+
+
 <!-- Galeria Section -->
-<section class="py-24 bg-white anchor-target relative overflow-visible" id="galeria">
+<section
+    id="galeria"
+    class="py-24 bg-white anchor-target relative overflow-visible"
+>
+    <!-- Dekoracja -->
 <div class="gallery-bottom-decor" aria-hidden="true">
-<img alt="" class="dragon-right size-one-third" src="smoki_i_chmury/smok1.png"/>
+    <img
+            src="smoki_i_chmury/smok1.png"
+            alt=""
+            class="dragon-right size-one-third"
+    >
 </div>
+
 <div class="max-w-screen-xl mx-auto px-6 relative z-10">
-<div class="text-center mb-20">
-<h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
-                Galeria
-                <div class="absolute -top-10 -right-16 text-accent -rotate-12">
-<span class="material-symbols-outlined text-7xl">photo_library</span>
-</div>
-</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-<!-- Album 1 -->
-<div class="bg-secondary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card" data-gallery="Zbiórki" data-images="zdjecia/zbiorka/zbiorka1.jfif,zdjecia/zbiorka/jacek.jfif">
-<div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
-<img alt="Zbiórki" class="album-main" src="zdjecia/zbiorka/zbiorka1.jfif"/>
-<div class="album-row">
-<img alt="Zbiórki miniatura" class="album-small" src="zdjecia/zbiorka/jacek.jfif"/>
-<div class="album-more">
-<img alt="" aria-hidden="true" class="album-more-bg" src="zdjecia/zbiorka/zbiorka1.jfif"/>
-<span class="album-more-label">Więcej</span>
-</div>
-</div>
-</div>
-<h3 class="text-2xl font-black font-headline uppercase tracking-tighter">Zbiórki</h3>
-<p class="text-xs font-black uppercase tracking-widest opacity-50">Zobacz zdjęcia z naszych spotkań</p>
-</div>
-<!-- Album 2 -->
-<div class="bg-primary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card" data-gallery="Zimowiska" data-images="zdjecia/zimo/zimo1.jpg,zdjecia/zimo/zimo2.jfif,zdjecia/zimo/zimo3.jfif,zdjecia/zimo/zimo4.jpeg,zdjecia/zimo/zimo5.jpeg,zdjecia/zimo/zimo6.jpeg,zdjecia/zimo/zimo7.jpeg,zdjecia/zimo/zimo8.jpg">
-<div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
-<img alt="Zimowisko 1" class="album-main" src="zdjecia/zimo/zimo1.jpg"/>
-<div class="album-row">
-<img alt="Zimowisko 2" class="album-small" src="zdjecia/zimo/zimo2.jfif"/>
-<div class="album-more">
-<img alt="" aria-hidden="true" class="album-more-bg" src="zdjecia/zimo/zimo3.jfif"/>
-<span class="album-more-label">Więcej</span>
-</div>
-</div>
-</div>
-<h3 class="text-2xl font-black font-headline uppercase tracking-tighter">Zimowiska</h3>
-<p class="text-xs font-black uppercase tracking-widest opacity-50">Przygody na śniegu</p>
-</div>
-<!-- Album 3 -->
-<div class="bg-tertiary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card" data-gallery="Kolonie" data-images="zdjecia/kolonia/kolonia1.jpg,zdjecia/kolonia/kolonia2.jpg,zdjecia/kolonia/kolonia3.jpg,zdjecia/kolonia/kolonia4.jpg,zdjecia/kolonia/kolonia5.jpg,zdjecia/kolonia/kolonia6.jpg,zdjecia/kolonia/kolonia7.jpg">
-<div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
-<img alt="Kolonia 1" class="album-main" src="zdjecia/kolonia/kolonia1.jpg"/>
-<div class="album-row">
-<img alt="Kolonia 2" class="album-small" src="zdjecia/kolonia/kolonia2.jpg"/>
-<div class="album-more">
-<img alt="" aria-hidden="true" class="album-more-bg" src="zdjecia/kolonia/kolonia3.jpg"/>
-<span class="album-more-label">Więcej</span>
-</div>
-</div>
-</div>
-<h3 class="text-2xl font-black font-headline uppercase tracking-tighter">Kolonie</h3>
-<p class="text-xs font-black uppercase tracking-widest opacity-50">Nasze wielkie letnie wyprawy</p>
-</div>
-</div>
+
+    <!-- Nagłówek -->
+    <header class="text-center mb-20">
+        <h2
+                class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative"
+        >
+            Galeria
+
+            <span
+                    class="absolute -top-10 -right-16 text-accent -rotate-12"
+                    aria-hidden="true"
+            >
+                    <span class="material-symbols-outlined text-7xl">
+                        photo_library
+                    </span>
+                </span>
+        </h2>
+    </header>
+
+    <!-- Albumy -->
+    <div class="flickr-gallery grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+        <!-- Zbiórki -->
+        <article class="flickr-album">
+            <div class="bg-tertiary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
+
+                <div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
+
+                    <img
+                            src="zdjecia/zbiorka/zbiorka1.jfif"
+                            alt="Zdjęcie ze zbiórki"
+                            class="album-main"
+                            loading="lazy"
+                    >
+
+                    <div class="album-row">
+                        <img
+                                src="zdjecia/zbiorka/jacek.jfif"
+                                alt="Uczestnicy zbiórki"
+                                class="album-small"
+                                loading="lazy"
+                        >
+
+                        <a
+                                href="https://www.flickr.com/photos/204984279@N05/albums/72177720335929713"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="album-flickr-link"
+                                aria-label="Otwórz album Flickr: Zbiórki"
+                        >
+                            <img
+                                    src="smoki_i_chmury/placeHolders/2.png"
+                                    alt=""
+                                    loading="lazy"
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-black font-headline uppercase tracking-tighter">
+                    Zbiórki
+                </h3>
+
+                <p class="text-xs font-black uppercase tracking-widest opacity-50">
+                    Zobacz zdjęcia z naszych spotkań
+                </p>
+            </div>
+        </article>
+
+        <!-- Zimowiska -->
+        <article class="flickr-album">
+            <div class="bg-secondary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
+
+                <div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
+
+                    <img
+                            src="zdjecia/zimo/zimo7.jpeg"
+                            alt="Zdjęcie z zimowiska"
+                            class="album-main"
+                            loading="lazy"
+                    >
+
+                    <div class="album-row">
+                        <img
+                                src="zdjecia/zimo/zimo2.jfif"
+                                alt="Zimowe wspomnienia"
+                                class="album-small"
+                                loading="lazy"
+                        >
+
+                        <a
+                                href="https://www.flickr.com/photos/204984279@N05/albums/72177720335877430"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="album-flickr-link"
+                                aria-label="Otwórz album Flickr: Zimowiska"
+                        >
+                            <img
+                                    src="smoki_i_chmury/placeHolders/3.png"
+                                    alt=""
+                                    loading="lazy"
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-black font-headline uppercase tracking-tighter">
+                    Zimowiska
+                </h3>
+
+                <p class="text-xs font-black uppercase tracking-widest opacity-50">
+                    Przygody na śniegu
+                </p>
+            </div>
+        </article>
+
+        <!-- Kolonie -->
+        <article class="flickr-album">
+            <div class="bg-primary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
+
+                <div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
+
+                    <img
+                            src="zdjecia/kolonia/kolonia1.jpg"
+                            alt="Zdjęcie z kolonii"
+                            class="album-main"
+                            loading="lazy"
+                    >
+
+                    <div class="album-row">
+                        <img
+                                src="zdjecia/kolonia/kolonia3.jpg"
+                                alt="Zdjęcie z Kolonii"
+                                class="album-small"
+                                loading="lazy"
+                        >
+                        <a
+                                href="https://www.flickr.com/photos/204984279@N05/albums/72177720335877430"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="album-flickr-link"
+                                aria-label="Otwórz album Flickr: Kolonie"
+                        >
+                            <img
+                                    src="smoki_i_chmury/placeHolders/1.png"
+                                    alt=""
+                                    loading="lazy"
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-black font-headline uppercase tracking-tighter">
+                    Kolonie
+                </h3>
+
+                <p class="text-xs font-black uppercase tracking-widest opacity-50">
+                    Nasze wielkie letnie wyprawy
+                </p>
+            </div>
+        </article>
+
+    </div>
 </div>
 </section>
-<div aria-hidden="true" class="section-interlude left">
-<img alt="" class="section-interlude-item size-two-thirds max-left" src="smoki_i_chmury/chmura3.png"/>
-</div>
+
+
+
 <!-- Kontakt Section -->
 <section class="py-24 bg-accent/10 border-t-4 border-black anchor-target" id="kontakt">
 <div class="max-w-screen-xl mx-auto px-8">
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
                 NAPISZ DO NAS!
-                <div class="absolute -top-10 -right-14 text-primary rotate-12 floating-cloud">
+                <span class="absolute -top-10 -right-14 text-primary rotate-12 floating-cloud">
 <span class="material-symbols-outlined text-6xl">mail</span>
-</div>
+</span>
 </h2>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -729,6 +837,9 @@
 </div>
 <p>© 2026 40 KGZ Bractwo Smoczej Doliny | ZHR | Czuwaj!</p>
 </footer>
+
+
+<!--
 <div aria-hidden="true" class="gallery-lightbox" id="galleryLightbox" role="dialog">
 <div class="lightbox-panel" role="document">
 <div class="lightbox-main">
@@ -745,6 +856,11 @@
 <div class="lightbox-thumbs" id="lightboxThumbs"></div>
 </div>
 </div>
+
+-->
+
+
+<!-- Zmieniłem galerie więc teraz to nie jest potrzebne, ale nie chce mi się patrzeć co jest w środku -->
 <script>
         (function () {
             const cards = document.querySelectorAll('.gallery-card');
