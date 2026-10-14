@@ -6,28 +6,53 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+
+    <script id="tailwind-config">
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                "primary": "#f08080", // Pink
-                "secondary": "#a3f0f0", // Teal/Cyan
-                "tertiary": "#ffe174", // Yellow
-                "accent": "#0d696a", // Dark Teal
-                "background": "#fcf9f8",
-                "on-background": "#1c1b1b",
-              },
-              fontFamily: {
-                "headline": ["Space Grotesk"],
-                "body": ["Public Sans"],
-              },
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f08080",
+                        "secondary": "#a3f0f0",
+                        "tertiary": "#ffe174",
+                        "accent": "#0d696a",
+                        "background": "#fcf9f8",
+                        "on-background": "#1c1b1b",
+
+                        /* Kolory ciemnego motywu */
+                        "dark-primary": "#ac0000",
+                        "dark-secondary": "#006c70",
+                        "dark-tertiary": "#ac9300",
+                        "dark-background": "#1c1b1b",
+                        "dark-on-background": "#fcf9f8",
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Public Sans"],
+                    },
+                },
             },
-          },
         }
     </script>
-<style>
+
+    <script>
+        (() => {
+            const saved = localStorage.getItem("theme");
+            const systemDark = window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches;
+
+            const dark = saved
+                ? saved === "dark"
+                : systemDark;
+
+            document.documentElement.classList.toggle("dark", dark);
+        })();
+    </script>
+
+    <style>
+
         html {
             scroll-behavior: smooth;
         }
@@ -356,14 +381,103 @@
             right: -2vw;
             bottom: -60px;
         }
+
+
+        /* ===== CIEMNY MOTYW ===== */
+
+        /* Podstawowe kolory strony */
+        .dark body {
+            background-color: #181818;
+            color: cornsilk;
+        }
+
+        /* Ciemne obramowania i cienie */
+        .dark .doodle-border,
+        .dark .album-main,
+        .dark .album-small,
+        .dark .album-more,
+        .dark .lightbox-panel,
+        .dark .lightbox-main,
+        .dark .lightbox-thumb,
+        .dark .lightbox-btn,
+        .dark .lightbox-nav {
+            border-color: cornsilk;
+        }
+
+        .dark .doodle-shadow {
+            box-shadow: 6px 6px 0 #8c8c8c;
+        }
+
+        .dark .doodle-shadow-hover:hover {
+            box-shadow: 3px 3px 0 #8c8c8c;
+        }
+
+        /* Wzory dekoracyjne */
+        .dark .dragon-bg {
+            background-image: radial-gradient(#ffe174 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-attachment: fixed;
+            );
+        }
+
+        /* Galeria */
+        .dark .album-main,
+        .dark .album-small,
+        .dark .lightbox-main,
+        .dark .lightbox-thumb,
+        .dark .lightbox-nav {
+            background-color: #252525;
+        }
+
+        .dark .album-more {
+            background-color: #252525;
+            color: #fff;
+        }
+
+        .dark .lightbox-panel {
+            background-color: #202020;
+            color: #f5f5f5;
+        }
+
+        .dark .lightbox-btn {
+            background-color: #ffe174;
+            color: #181818;
+        }
+
+        .dark .lightbox-nav {
+            color: #f5f5f5;
+        }
+
+        /* Elementy Tailwinda */
+        .dark .bg-white {
+            background-color: #252525;
+            color: whitesmoke;
+        }
+
+        .dark .bg-background {
+            background-color: #181818;
+        }
+
+        .dark .text-black {
+            color: #000000;
+        }
+
+        .dark .border-black {
+            border-color: cornsilk;
+        }
+
+        /* Linki i przejścia */
+        .dark a {
+            transition: color 0.2s ease;
+        }
     </style>
 </head>
 <body class="bg-background font-body text-on-background selection:bg-primary selection:text-white dragon-bg dragon-scales">
 <!-- Navbar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b-4 border-black">
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-dark-background/90 backdrop-blur-md border-b-4 border-black dark:border-black-on-bacground">
 <div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
 <div class="flex items-center gap-2">
-<div class="text-xl font-black text-on-background font-headline tracking-tighter uppercase">
+<div class="text-xl font-black dark:text-dark-on-background text-on-background font-headline tracking-tighter uppercase">
                 40 KGZ Bractwo Smoczej Doliny
             </div>
 </div>
@@ -395,7 +509,7 @@
 <h1 class="text-5xl md:text-8xl font-black text-white font-headline leading-none drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] uppercase italic">
             40 KGZ Bractwo Smoczej Doliny
         </h1>
-<a class="bg-primary text-on-background font-headline font-black text-xl px-12 py-5 doodle-border doodle-shadow doodle-shadow-hover transition-all uppercase tracking-widest transform -rotate-2 inline-block" href="#strefa-rodzica">
+<a class="bg-primary dark:bg-dark-primary text-on-background dark:text-dark-on-background font-headline font-black text-xl px-12 py-5 doodle-border doodle-shadow doodle-shadow-hover transition-all uppercase tracking-widest transform -rotate-2 inline-block" href="#strefa-rodzica">
             DOŁĄCZ DO NAS!
     </a>
 </div>
@@ -413,21 +527,21 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 <!-- Card 1 -->
-<div class="bg-secondary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:-rotate-1">
+<div class="bg-secondary dark:bg-dark-secondary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:-rotate-1">
 <div class="mb-6 p-4 bg-white rounded-xl doodle-border">
 <span class="material-symbols-outlined text-5xl">construction</span>
 </div>
 <h3 class="text-xl font-black font-headline mb-0 uppercase leading-tight">Budowanie umiejętności</h3>
 </div>
 <!-- Card 2 -->
-<div class="bg-primary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:rotate-2">
+<div class="bg-primary dark:bg-dark-primary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:rotate-2">
 <div class="mb-6 p-4 bg-white rounded-xl doodle-border">
 <span class="material-symbols-outlined text-5xl">forest</span>
 </div>
 <h3 class="text-xl font-black font-headline mb-0 uppercase leading-tight">Aktywność na zewnątrz</h3>
 </div>
 <!-- Card 3 -->
-<div class="bg-tertiary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:-rotate-2">
+<div class="bg-tertiary dark:bg-dark-tertiary p-8 doodle-border doodle-shadow doodle-shadow-hover transition-all flex flex-col items-center text-center transform hover:-rotate-2">
 <div class="mb-6 p-4 bg-white rounded-xl doodle-border">
 <span class="material-symbols-outlined text-5xl">groups</span>
 </div>
@@ -450,9 +564,9 @@
 
 </div>
 <div class="max-w-4xl mx-auto px-8 relative z-10">
-<div class="bg-white p-12 doodle-border doodle-shadow relative">
+<div class="bg-white dark:bg-dark p-12 doodle-border doodle-shadow relative">
 <div class="mb-8 flex items-center justify-center gap-3 text-primary floating-cloud">
-<h2 class="text-5xl font-black font-headline uppercase text-center italic text-on-background">O nas!</h2>
+<h2 class="text-5xl font-black dark:text-dark-on-background font-headline uppercase text-center italic text-on-background">O nas!</h2>
 <span class="material-symbols-outlined text-5xl">edit_note</span>
 </div>
 <div class="text-lg leading-relaxed font-medium space-y-6">
@@ -467,7 +581,7 @@
 <img alt="" class="section-interlude-item size-cloud-plus-30" src="smoki_i_chmury/chmrura2.png"/>
 </div>
 <!-- Nasza Kadra Section -->
-<section class="py-24 bg-secondary/20 border-y-4 border-black">
+<section class="py-24 bg-secondary/20 dark:bg-dark-secondary/30 border-y-4 border-black">
 <div class="max-w-screen-xl mx-auto px-8">
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black font-headline uppercase inline-block relative">
@@ -480,15 +594,15 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Team Member 1 -->
 <div class="flex flex-col items-center group">
-<div class="w-48 h-48 bg-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-3 transition-transform">
+<div class="w-48 h-48 bg-primary dark:bg-dark-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-3 transition-transform">
 <img alt="Jacek Kułakowski" class="w-full h-full object-cover" src="zdjecia/kadra/jaca.png"/>
 </div>
 <h3 class="text-xl font-black font-headline uppercase">Jacek Kułakowski</h3>
-<p class="text-xs font-black uppercase tracking-widest text-primary mt-1">drużynowy</p>
+<p class="text-xs font-black  uppercase tracking-widest text-primary  mt-1">drużynowy</p>
 </div>
 <!-- Team Member 2 -->
 <div class="flex flex-col items-center group">
-<div class="w-48 h-48 bg-accent doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:-rotate-2 transition-transform">
+<div class="w-48 h-48 bg-accent dark:bg-dark-secondary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:-rotate-2 transition-transform">
 <img alt="Adam Gruszczyński" class="w-full h-full object-cover" src="zdjecia/kadra/adam.png"/>
 </div>
 <h3 class="text-xl font-black font-headline uppercase">Adam Gruszczyński</h3>
@@ -496,7 +610,7 @@
 </div>
 <!-- Team Member 3 -->
 <div class="flex flex-col items-center group">
-<div class="w-48 h-48 bg-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-6 transition-transform">
+<div class="w-48 h-48 bg-primary dark:bg-dark-primary doodle-border doodle-shadow rounded-3xl mb-6 overflow-hidden transform group-hover:rotate-6 transition-transform">
 <img alt="Dominik Mika" class="w-full h-full object-cover" src="zdjecia/kadra/dominik.png"/>
 </div>
 <h3 class="text-xl font-black font-headline uppercase">Dominik Mika</h3>
@@ -522,7 +636,7 @@
 </h2>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-<div class="bg-secondary p-10 doodle-border doodle-shadow flex flex-col justify-center">
+<div class="bg-secondary dark:bg-dark-secondary p-10 doodle-border doodle-shadow flex flex-col justify-center">
 <div class="mb-6">
 <span class="material-symbols-outlined text-6xl">calendar_month</span>
 </div>
@@ -557,7 +671,7 @@
 <div class="space-y-6">
 <!-- Accordion 1 -->
 <details class="group doodle-border doodle-shadow overflow-hidden bg-white" open="">
-<summary class="p-6 cursor-pointer bg-secondary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
+<summary class="p-6 cursor-pointer bg-secondary dark:bg-dark-secondary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
                     Dla nowych zuchów
                     <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
@@ -567,7 +681,7 @@
 </details>
 <!-- Accordion 2 -->
 <details class="group doodle-border doodle-shadow overflow-hidden bg-white">
-<summary class="p-6 cursor-pointer bg-primary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
+<summary class="p-6 cursor-pointer bg-primary dark:bg-dark-primary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
                     Mundur i ekwipunek
                     <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
@@ -575,19 +689,32 @@
 <p>Obowiązuje mundur zuchowy ZHR. Można go kupić w składnicy harcerskiej przy rondzie Grzegórzeczkim albo zamówić online na <a class="font-black underline" href="#">sklepharcerski.pl</a>. Często można też znaleźć używane w świetnym stanie na portalach ogłoszeniowych.</p>
 </div>
 </details>
+
 <!-- Accordion 3 -->
 <details class="group doodle-border doodle-shadow overflow-hidden bg-white">
-<summary class="p-6 cursor-pointer bg-tertiary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
+<summary class="p-6 cursor-pointer bg-tertiary dark:bg-dark-tertiary flex justify-between items-center border-b-4 border-black font-black uppercase text-xl tracking-tight list-none">
                     Sprawy formalne
                     <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
-<div class="accordion-content p-8 bg-white font-medium leading-relaxed">
-<p class="mb-4">Składka wynosi 28 zł miesięcznie i opłacana jest przelewem na konto Szczepu.</p>
-<div class="p-4 bg-background border-2 border-dashed border-black rounded-lg font-mono text-sm">
+    <div class="accordion-content p-8 bg-white font-medium leading-relaxed">
+        <p class="mb-4">Składka wynosi 28 zł miesięcznie i opłacana jest przelewem na konto Szczepu.</p>
+            <div class="p-4 bg-background border-2 border-dashed border-black rounded-lg font-mono text-sm">
                         Nr konta: 20 1020 1026 0000 1802 0540 9190 <br/>
                         Tytuł: Składka programowa [Imię Nazwisko] 40 KGZ Bractwo Smoczej Doliny za [okres wpłaty]
-                    </div>
-</div>
+            </div>
+        <br>
+        <p class="mb-4">Zgodna na przynależność do drużyny. Należy ją dsotarczyć w formie papierowej na zbiórkę.</p>
+            <div class="p-4 bg-background border-2 border-dashed border-black rounded-lg font-mono text-sm">
+                <a href="Dokumenty/Zgoda_na_przynależność_do_ZHR.pdf"
+                   download
+                   class="inline-block bg-primary text-white font-black uppercase px-6 py-3 rounded-xl hover:scale-105 transition-transform">>
+                    Zgodna na przynależność do ZHR <br>
+                </a>
+
+            </div>
+
+
+    </div>
 </details>
 </div>
 </div>
@@ -636,7 +763,7 @@
 
         <!-- Zbiórki -->
         <article class="flickr-album">
-            <div class="bg-tertiary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
+            <div class="bg-tertiary dark:bg-dark-tertiary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
 
                 <div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
 
@@ -671,7 +798,7 @@
                     </div>
                 </div>
 
-                <h3 class="text-2xl font-black font-headline uppercase tracking-tighter">
+                <h3 class="text-2xl font-black dark:text-dark-on-background font-headline uppercase tracking-tighter">
                     Zbiórki
                 </h3>
 
@@ -683,7 +810,7 @@
 
         <!-- Zimowiska -->
         <article class="flickr-album">
-            <div class="bg-secondary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
+            <div class="bg-secondary dark:bg-dark-secondary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
 
                 <div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
 
@@ -730,7 +857,7 @@
 
         <!-- Kolonie -->
         <article class="flickr-album">
-            <div class="bg-primary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
+            <div class="bg-primary dark:bg-dark-primary p-3 doodle-border doodle-shadow doodle-shadow-hover transition-all group gallery-card">
 
                 <div class="bg-white doodle-border mb-4 overflow-hidden p-2 album-collage">
 
@@ -808,7 +935,7 @@
 <p class="text-sm uppercase tracking-widest font-black opacity-30 mt-10">Odpowiadamy zazwyczaj w ciągu 24h</p>
 </div>
 <!-- Socials -->
-<div class="bg-tertiary p-10 doodle-border doodle-shadow flex flex-col items-center justify-center">
+<div class="bg-tertiary dark:bg-dark-tertiary p-10 doodle-border doodle-shadow flex flex-col items-center justify-center">
 <h3 class="text-3xl font-black font-headline uppercase italic mb-10 text-center">Znajdź nas w sieci</h3>
 <div class="flex gap-12">
 <a class="flex flex-col items-center gap-2 group" href="https://www.facebook.com/profile.php?id=100079442983488" target="_blank">
